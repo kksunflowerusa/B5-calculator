@@ -163,7 +163,7 @@ async function calculate() {
     外箱實際重：${actualLb} 磅<br>
     計費重量：${chargeableLb} 磅<br>
     <hr>
-    內箱細節：<br>${innerDetails}
+    內箱細節(實重為主)：<br>${innerDetails}
     小於1磅的內箱件數：${underOneLbCount} 件<br>
     <hr>
     運費金額：$${usdTotalFloat.toFixed(2)} 美元<br>
@@ -176,6 +176,7 @@ async function calculate() {
 </script>
 </body>
 </html>
+
 
 
 
