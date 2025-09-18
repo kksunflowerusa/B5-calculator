@@ -58,13 +58,13 @@ async function calculate() {
   const today = new Date().toLocaleDateString(); // 今天日期
 
   try {
-    const res = await fetch('https://script.google.com/macros/s/AKfycbx5r07YWfe5V9xj8Eh1sFrJZMpdH56Gqcnbuwm6jv1FiavDf6cETmmigDDrt8sDUuuaug/exec');
+    const res = await fetch('https://script.google.com/macros/s/AKfycbwIXrYJFsn79jgdIwTVwlg-rb7_i2zYBipXQu4MS27kIvsNOu-NNBaa_d9pHxw7768L/exec');
     const data = await res.json();
     console.log('GAS 回傳：', data);
 
     const usdSell = parseFloat(data.usdCashSell);
     if (!isNaN(usdSell)) {
-      const customRate = usdSell + 0.5;
+      const customRate = usdSell + 0.8;
       customRateDisplay = customRate.toFixed(3); // 顯示小數點第三位
       twdTotal = Math.ceil(parseFloat(usdTotal) * customRate); // 無條件進位
     } else {
@@ -89,5 +89,6 @@ async function calculate() {
 </script>
 </body>
 </html>
+
 
 
