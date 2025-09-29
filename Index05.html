@@ -97,7 +97,7 @@ async function calculate() {
   const chargeableLb = Math.max(volumetricLb, actualLb);
 
   // 基本運費
-  let usdTotal = chargeableLb * (4.69 + 0.8);
+  let usdTotal = chargeableLb * (4.69 + 0.9);
   if (chargeableLb >= 1 && chargeableLb <= 10) usdTotal += 12;
   else if (chargeableLb >= 11 && chargeableLb <= 20) usdTotal += 6;
 
@@ -176,6 +176,7 @@ async function calculate() {
 </script>
 </body>
 </html>
+
 
 
 
