@@ -15,7 +15,7 @@
 </style>
 </head>
 <body>
-<h2>B5新運費計算器</h2>
+<h2>B5運費計算器</h2>
 
 <!-- 外箱資訊 -->
 <label>長 (公分)：<input type="number" id="length" step="0.01"></label>
@@ -96,12 +96,20 @@ async function calculate() {
   const actualLb = Math.ceil(weightKg / 0.454);
   const chargeableLb = Math.max(volumetricLb, actualLb);
 
+  // TW 服務費顯示用
+  let twServiceFeeText = '';
+  if (chargeableLb >= 1 && chargeableLb <= 10) {
+    twServiceFeeText = 'TW 服務費 = 12 元';
+  } else if (chargeableLb >= 11 && chargeableLb <= 20) {
+    twServiceFeeText = 'TW 服務費 = 6 元';
+  }
+
   // 修改後基本運費
-  let usdTotal = chargeableLb * (4.99 + 1.2); // 修改1：每磅4.99 + 每磅1.2國內運費
+  let usdTotal = chargeableLb * (4.99 + 1.2); // 每磅4.99 + 每磅1.2國內運費
   if (chargeableLb >= 1 && chargeableLb <= 10) usdTotal += 12;
   else if (chargeableLb >= 11 && chargeableLb <= 20) usdTotal += 6;
 
-  // 修改後：每件內箱都收$6
+  // 每件內箱都收$6
   const innerCount = parseInt(document.getElementById('innerCount').value) || 0;
   let innerDetails = '';
   for (let i = 1; i <= innerCount; i++) {
@@ -109,7 +117,7 @@ async function calculate() {
     const lb = kg / 0.454;
     innerDetails += `第${i}件 ${kg} kg = ${lb.toFixed(3)} lb<br>`;
   }
-  usdTotal += innerCount * 6; // 修改2：每件收6美元
+  usdTotal += innerCount * 6; // 每件收6美元
 
   const usdTotalFloat = parseFloat(usdTotal);
   let customRate = null;
@@ -160,6 +168,7 @@ async function calculate() {
     材積重：${volumetricLb} 磅<br>
     外箱實際重：${actualLb} 磅<br>
     計費重量：${chargeableLb} 磅<br>
+    <b>${twServiceFeeText}</b><br>
     <hr>
     內箱細節(實重為主)：<br>${innerDetails}
     內箱件數：${innerCount} 件 (每件收取 $6 服務費)<br>
