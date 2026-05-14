@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B5運費計算器2</title>
+<title>B5運費計算器</title>
 <style>
   body {font-family: Arial, sans-serif; max-width: 900px; margin: 30px auto; padding: 20px;}
   label {display:block; margin-top:10px;}
@@ -19,7 +19,7 @@
 </style>
 </head>
 <body>
-<h2>B5運費計算器2</h2>
+<h2>B5運費計算器</h2>
 
 <label>包裹件數：
   <input type="number" id="packageCount" step="1" min="1" value="1" oninput="renderPackages()">
@@ -28,7 +28,7 @@
 <label>會員折扣：
   <input type="number" id="discountRate" step="0.01" min="0" value="1" placeholder="例如 95 折請輸入 0.95">
 </label>
-<div class="small">折扣僅限每磅 $4.99 的部分。</div>
+<div class="small">折扣僅限每磅 $4.99 的部分，95折請輸入0.95。</div>
 
 <div id="packages"></div>
 
